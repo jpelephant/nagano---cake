@@ -1,0 +1,2 @@
+module Admins::OrderShowHelper
+end

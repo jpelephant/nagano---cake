@@ -1,0 +1,2 @@
+module Customers::ShippingAddressHelper
+end
