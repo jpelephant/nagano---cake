@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-1 col-md-3">
+      <h1><strong>注文履歴一覧</strong></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-offset-1 col-md-9">
+      <%= @orders.each do |order| %>
+      <tr>
+        <th>購入日時</th>
+        <th>購入者</th>
+        <th>注文個数</th>
+      </tr>
+      <tr>
+        <th><%= order.Date.current.strftime(‘%Y/%m/%d’) %></th>
+        <th><%= order.@customer.full_name %></th>
+        <th><%= order.cart_item.price %></th>
+      </tr>
+      <senter>
+        <%= paginate @orders %>
+      </senter>
+    </div>
+  </div>
+</div>
