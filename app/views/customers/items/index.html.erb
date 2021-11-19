@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+       <%= render 'homes/genre', name: @genres %>
+    </div>
+    <%= @items.each do |item| %>
+    <div class="col-md-8">
+      <h1><strong>商品一覧</strong></h1>
+      <tr>
+        <th><%= attachment_image_tag item, :image %></th>
+      </tr>
+      <tr>
+        <th><%= item.name %></th>
+      </tr>
+      <tr>
+        <th>¥<%= item.price %></th>
+      </tr>
+      <% paginate @items %>
+    </div>
+  </div>
+</div>
