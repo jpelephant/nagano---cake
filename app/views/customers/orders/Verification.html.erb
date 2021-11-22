@@ -1,0 +1,56 @@
+<h1><strong>注文情報確認</strong></h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+      <div class="table">
+        <%= @cart_items.each do |cart_item| %>
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+        </tr>
+        <tr>
+          <td><%= attachment_image_tag post_image, :image %><%= cart_item.name %></td>
+          <td><%= cart_item.price %></td>
+          <td><%= cart_item.amount %></td>
+          <td><%=  %></td>
+        </tr>
+      </div>
+      <div class="col-md-4">
+        <div class="table">
+          <tr>
+            <td>送料</td>
+            <th></th>
+          </tr>
+          <tr>
+            <td>商品合計</td>
+            <th>¥<%= @total.round.to_s(:delimited)%></th>
+          </tr>
+          <tr>
+            <td>請求金額</td>
+            <th>¥<%= @total.round.to_s(:delimited)%></th>
+          </tr>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10">
+        <div class="table">
+          <tr>
+            <th>支払方法</th>
+            <td></td>
+          </tr>
+          <tr>
+            <th>お届け先</th>
+            <td></td>
+          </tr>
+        </div>
+      </div>
+    </div>
+    <div class="senter">
+      <%= link_to "注文を確定する"  %>
+    </div>
+  </div>
+</div>
