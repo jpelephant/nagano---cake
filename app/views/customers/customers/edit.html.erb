@@ -1,0 +1,39 @@
+<h1><strong>会員情報編集</strong></h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <%= from_with model:@customer, local:ture do |f| %>
+      <tr>
+        <th>氏名</th>
+        <td><%= f.text_field :first_name %></td>
+        <td><%= f.text_field :last_name %></td>
+      </tr>
+      <tr>
+        <th>フリガナ</th>
+        <td><%= f.text_field :first_name_kana %></td>
+        <td><%= f.text_field :last_name_kana %></td>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <td><%= f.text_field :postal_code %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= f.text_field :address %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= f.text_field :telephone_number %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= f.text_field :email %></td>
+      </tr>
+    </div>
+    <div class="col-md-12">
+      <%= f.submit '編集内容を保存' %>
+      <%= link_to "退会する" customers_path %>
+    </div>
+  </div>
+</div>
