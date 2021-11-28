@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :customers
   devise_for :admins
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: 'home#top'
+  root to: 'homes#top'
   get 'homes', to: 'homes#about'
   resources :items, only: [:index, :show]
   resources :customers, only: [:show, :edit, :update]
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get 'orders', to: 'orders#thanks'
   patch 'orders', to: 'orders#confirm'
   resources :shipping_address,  except: [:show, :new]
-  
+
   namespace :admins do
     get 'homes', to: 'homes#top'
     resources :items, except: [:destroy]
