@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-       <%= render 'homes/genre', name: @genres %>
+       <%= render 'customers/homes/genre', genres: @genres %>
     </div>
     <%= @items.each do |item| %>
     <div class="col-md-8">
@@ -17,5 +17,6 @@
       </tr>
       <% paginate @items %>
     </div>
+    <% end %>
   </div>
 </div>

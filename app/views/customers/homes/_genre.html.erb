@@ -4,10 +4,11 @@
       <th>genre検索</th>
     </tr>
   </thead>
-  <%= @genres each do |genre|  %>
+  <%= genres.each do |genre| %>
   <tbody>
     <tr>
       <th><%= genre.name %></th>
     </tr>
   </tbody>
+  <% end %>
 </div>

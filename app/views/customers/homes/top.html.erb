@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-       <%= render 'homes/genre', name: @genres %>
+       <%= render 'customers/homes/genre', genres: @genres %>
     </div>
     <div class="col-md-6">
       <senter>
@@ -19,11 +19,12 @@
     <div class="col-md-offset-3 col-md-8">
       <h2><strong>新着商品</strong></h2>
       <tr>
-        <th><%= attachment_image_tag @item, :image %></th>
+        <th><%= attachment_image_tag @items, :image %></th>
         <th><%= item.name %></th>
         <td>¥<%= item.price %></td>
       </tr>
-      <%= link_to "全ての商品を見る" customer_session_path %>
+      <%= link_to "全ての商品を見る", customer_session_path %>
     </div>
+    <% end %>
   </div>
 </div>

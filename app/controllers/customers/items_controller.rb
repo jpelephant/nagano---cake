@@ -4,7 +4,7 @@ class Customers::ItemsController < ApplicationController
     @item = Item.all
     @genres = Genre.all
   end
-  
+
   def show
     @item = Item.find(params[:id])
     @genres = Genre.all
