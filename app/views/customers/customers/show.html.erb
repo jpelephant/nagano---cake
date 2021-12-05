@@ -3,7 +3,7 @@
 <div class="table">
   <tr>
     <th><strong>登録情報</strong></th>
-    <th><%= link_to "編集する", edit_customer_path(@customers) %></th>
+    <th><%= link_to "編集する", edit_customer_path(@customer) %></th>
   </tr>
 </div>
 
@@ -33,7 +33,7 @@
         </tr>
         <tr>
           <th>メールアドレス</th>
-          <th><%= @customer.emaill %></th>
+          <th><%= @customer.email %></th>
         </tr>
       </div>
     </div>
