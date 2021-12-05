@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col-md-offset-2 col-md-8">
-      <%= @customer.each do |customer| %>
+      <% @customer.each do |customer| %>
       <tr>
         <th>会員ID</th>
         <th>氏名</th>
@@ -14,9 +14,10 @@
       </tr>
       <tr>
         <th><%= customer.id %></th>
-        <td><%= customer.name %></td>
+        <td><%= customer.full_name %></td>
         <td><%= customer.email %></td>
       </tr>
+      <% end %>
       <senter>
         <%= paginate @customers %>
       </senter>

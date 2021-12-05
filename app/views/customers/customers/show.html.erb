@@ -3,38 +3,37 @@
 <div class="table">
   <tr>
     <th><strong>登録情報</strong></th>
-    <th><%= link_to "編集する" edit_customer_path(params[:id]), class="btn btn-success" %></th>
+    <th><%= link_to "編集する", edit_customer_path(@customers) %></th>
   </tr>
 </div>
 
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <%= @customers.each do |customer| %>
       <div class="table">
         <tr>
           <th>氏名</th>
-          <th><%= customer.full_name %></th>
+          <th><%= @customer.full_name %></th>
         </tr>
         <tr>
           <th>カナ</th>
-          <th><%= customer.full_name_kana %></th>
+          <th><%= @customer.full_name_kana %></th>
         </tr>
         <tr>
           <th>郵便番号</th>
-          <th><%= customer.postal_code %></th>
+          <th><%= @customer.postal_code %></th>
         </tr>
         <tr>
           <th>住所</th>
-          <th><%= customer.address %></th>
+          <th><%= @customer.address %></th>
         </tr>
         <tr>
           <th>電話番号</th>
-          <th><%= customer.telephone_number %></th>
+          <th><%= @customer.telephone_number %></th>
         </tr>
         <tr>
           <th>メールアドレス</th>
-          <th><%= customer.emaill %></th>
+          <th><%= @customer.emaill %></th>
         </tr>
       </div>
     </div>
@@ -42,11 +41,11 @@
       <div class="table">
         <tr>
           <th>配送先</th>
-          <th><%= link_to "一覧を見る"  shipping_address_index_path, class="btn btn-primary btn-lg" %></th>
+          <th><%= link_to "一覧を見る",  shipping_address_index_path %></th>
         </tr>
         <tr>
           <th>注文履歴</th>
-          <th><%= link_to "一覧を見る" orders_path, class="btn btn-primary btn-lg" %></th>
+          <th><%= link_to "一覧を見る", orders_path %></th>
         </tr>
       </div>
     </div>

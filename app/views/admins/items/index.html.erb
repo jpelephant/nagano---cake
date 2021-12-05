@@ -1,15 +1,15 @@
 <div class="row">
   <h1><strong>商品一覧</strong></h1>
-  <%= link_to "" new_admins_item_path, class: "fas fa-plus" %>
+  <%= link_to "", new_admins_item_path, class: "fas fa-plus" %>
 </div>
-  
+
 </div>
 <div class="container">
   <div class="row">
     <div class="col-md-offset-1 col-md-10">
       <div class="table">
         <thead>
-          <%= @items each do |item| %>
+          <% @items.each do |item| %>
           <tr>
             <th>商品ID</th>
             <th>商品名</th>
@@ -24,8 +24,8 @@
             <td><%= item.price %></td>
             <td><%= item.genre.name %></td>
           </tr>
+          <% end %>
         </tbody>
-        <% end %>
         <tfooter>
           <%= paginate @item %>
         </tfooter>

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :customers
+  devise_for :customers, controllers: {
+   sessions:      'customers/sessions',
+   passwords:     'customers/passwords',
+   registrations: 'customers/registrations'
+  }
   devise_for :admins
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   scope module: :customers do
@@ -7,14 +11,14 @@ Rails.application.routes.draw do
     get 'homes', to: 'homes#about'
     resources :items, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update]
-    get 'customers', to: 'customers#withdrawal'
+    get 'customers/withdrawal', to: 'customers#withdrawal'
     patch 'customers/:id', to: 'customers#destroy'
     resources :cart_items, only: [:index, :update, :destroy, :create]
-    delete 'cart_items', to: 'cart_items#destroy_all'
+    delete 'cart_items/destroy_all', to: 'cart_items#destroy_all'
     resources :orders, only: [:new, :index, :show]
-    get 'orders', to: 'orders#verification'
-    get 'orders', to: 'orders#thanks'
-    patch 'orders', to: 'orders#confirm'
+    get 'orders/verification', to: 'orders#verification'
+    get 'orders/thanks', to: 'orders#thanks'
+    patch 'orders/confirm', to: 'orders#confirm'
     resources :shipping_address,  except: [:show, :new]
   end
 
