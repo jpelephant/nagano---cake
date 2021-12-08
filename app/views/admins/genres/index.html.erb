@@ -11,7 +11,7 @@
         <thead>
           <tr>
             <th>ジャンル名</th>
-            <td><%= f.text_field :genre %></td>
+            <td><%= f.text_field :name %></td>
             <td><%= f.submit "新規登録" %></td>
           </tr>
         </thead>
@@ -32,7 +32,7 @@
         <tbody>
           <tr>
             <th><%= genre.name %></th>
-            <td><%= link_to "編集する", edit_admins_genre_path %></td>
+            <td><%= link_to "編集する", edit_admins_genre_path(genre.id) %></td>
           </tr>
         </tbody>
       </table>

@@ -4,7 +4,7 @@
       <h1><strong>商品新規登録</strong></h1>
     </div>
   </div>
-  <%= from_with model: @item, local:true do |f| %>
+  <%= form_with model: @item,url: admins_items_path, local:true do |f| %>
   <div class="row">
     <div class="col-md-offset-3 col-md-5">
       <table>
@@ -22,14 +22,14 @@
         </tr>
         <tr>
           <th>ジャンル</th>
-          <td><%= f.select :genre_id, @Genre.all, @Genre.name, "〜選択してください〜" %></td>
+          <td><%= f.collection_select(:name, @categories, :id, :name) %></td>
         </tr>
         <tr>
           <th>税抜価格</th>
           <td><%= f.text_field :price %>円</td>
         </tr>
-        <%= f.submit'新規投稿' %>
       </table>
+      <%= f.submit'新規投稿' %>
     </div>
   <% end %>
   </div>

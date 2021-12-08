@@ -5,9 +5,9 @@ class Admins::GenresController < ApplicationController
   end
 
   def create
-    genre = Genre.new(blog_params)
+    genre = Genre.new(genre_params)
     genre.save
-    redirect_to genres_path
+    redirect_to admins_genres_path
   end
 
   def edit
@@ -17,14 +17,14 @@ class Admins::GenresController < ApplicationController
   def update
     genre = Genre.find(params[:id])
     genre.update(genre_params)
-    redirect_to genre_path(genre)
+    redirect_to admins_genres_path
   end
 
   def new
     @genre = Genre.new
   end
 
-  private
+private
   def genre_params
     params.require(:genre).permit(:name)
   end

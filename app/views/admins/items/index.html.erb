@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-offset-1 col-md-1">
       <h1><strong>商品一覧</strong></h1>
+    </div>
+    <div class="col-md-offset-8 col-md-1">
       <%= link_to "", new_admins_item_path, class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
     </div>
   </div>
@@ -29,7 +31,6 @@
         <tfooter>
           <%= paginate @item %>
         </tfooter>
-        </div>
       </div>
     </div>
   </div>

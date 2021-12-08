@@ -6,8 +6,9 @@
   </div>
   <div class="row">
     <div class="col-md-6">
-      <%= from_with model:@genre, local: ture do |f| %>
+      <%= form_with model:@genre,url: admins_genre_path, local: true do |f| %>
       <p>ジャンル名<%= f.text_field :name %><%= f.submit "変更を保存" %></p>
+      <% end %>
     </div>
   </div>
 </div>
