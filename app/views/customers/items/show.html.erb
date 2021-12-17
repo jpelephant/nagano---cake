@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-       <%= render 'homes/genre', name: @genres %>
+       <%= render 'customers/homes/genre', genres: @genres %>
     </div>
     <div class="col-md-8">
       <div class="table">
@@ -20,6 +20,7 @@
           <td><%= f.select :amount, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"],["5","5"],["6","6"],["7","7"],["8","8"],["9","9"]], include_blank: "個数選択" %></td>
           <td><%= f.submit "カートに入れる" %></td>
         </tr>
+        <% end %>
       </div>
     </div>
   </div>

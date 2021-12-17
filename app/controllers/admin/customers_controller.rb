@@ -1,4 +1,9 @@
-class Customers::CustomersController < ApplicationController
+class Admin::CustomersController < ApplicationController
+  def index
+    @customer = Customer.all
+    @customers = Customer.all.page(params[:page]).per(10)
+  end
+
   def show
     @customer = Customer.find(params[:id])
   end
@@ -10,17 +15,10 @@ class Customers::CustomersController < ApplicationController
   def update
     customer = Customer.find(params[:id])
     customer.update(customer_params)
-    redirect_to customer_path(customer)
+    redirect_to admin_customer_path(customer)
   end
 
-  def withdrawal
-    @customer = Customer.find(params[:id])
-  end
-
-  def destroy
-  end
-
-   private
+    private
 
   def customer_params
     params.require(:customer).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :address, :telephone_number, :emaill)

@@ -2,10 +2,10 @@ class Item < ApplicationRecord
   has_many :cart_item
   has_many :order_details
   belongs_to :genre
-  
+
   attachment :image
-  
-  def with_tax_price
-    (price * 1.1).floor
+
+  def add_tax_sales_price
+    (self.price * 1.10).round
   end
 end

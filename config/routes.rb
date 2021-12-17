@@ -4,7 +4,7 @@ Rails.application.routes.draw do
    passwords:     'customers/passwords',
    registrations: 'customers/registrations'
   }
-  devise_for :admins
+  devise_for :admin
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   scope module: :customers do
     root to: 'homes#top'
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :shipping_address,  except: [:show, :new]
   end
 
-  namespace :admins do
+  namespace :admin do
     get 'homes', to: 'homes#top'
     resources :items, except: [:destroy]
     resources :genres, except: [:new, :destro, :show]

@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-1 col-md-2">
+      <h1><strong>会員一覧</strong></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+      <% @customer.each do |customer| %>
+      <tr>
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+      </tr>
+      <tr>
+        <th><%= customer.id %></th>
+        <td><%= link_to customer.full_name, admin_customer_path(customer) %></td>
+        <td><%= customer.email %></td>
+      </tr>
+      <% end %>
+      <senter>
+        <%= paginate @customers %>
+      </senter>
+    </div>
+  </div>
+</div>
