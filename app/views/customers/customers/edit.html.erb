@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-9">
-      <%= form_with model:@customer,url: edit_customer_path, local:true do |f| %>
+      <%= form_with model:@customer,url: @customer_path, local:true do |f| %>
       <tr>
         <th>氏名</th>
         <td><%= f.text_field :first_name %></td>

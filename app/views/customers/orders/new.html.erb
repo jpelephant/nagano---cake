@@ -6,31 +6,26 @@
   </div>
 </div>
 <h1>支払方法</h1>
-
-<%= f.radio_button :payment_method, "credit_card" %>
-<%= f.label :payment_method, "クレジットカード" %>
-
-<%= f.radio_button :payment_method, "transfer" %>
-<%= f.label :payment_method, "銀行振込" %>
+<%= form_with model: @address, local:true do |f| %>
+  <%= f.radio_button :payment_method, 0, checked: true %>クレジットカード
+  <%= f.radio_button :payment_method, 1 %>銀行振り込み
 
 <h2><strong>お届け先</strong></h2>
 <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
 
-<%= from_with model:@address local :ture do |f| %>
-
 <div class="label">
-  <%= f.label : "郵便番号(ハイフンなし)" %>
-  <%= f.text_field :post_code autocomplete: "post_code" %>
+  <%= f.label :post_code, "郵便番号（ハイフンなし）" %>
+  <%= f.text_field :post_code %>
 </div>
 
 <div class="label">
-  <%= f.label : "住所" %>
-  <%= f.text_field :address autocomplete: "address" %>
+  <%= f.label :address, "住所"  %>
+  <%= f.text_field :address %>
 </div>
 
 <div class="label">
-  <%= f.label : "宛名" %>
-  <%= f.text_field :name autocomplete: "name" %>
+  <%= f.label :name, "宛名" %>
+  <%= f.text_field :name %>
 </div>
 
 <%= f.submit "確認画面へ進む" %>

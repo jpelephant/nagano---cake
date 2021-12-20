@@ -12,7 +12,7 @@ class Customers::CartItemsController < ApplicationController
   def destroy
     @cart_item = Cart_item.find(params[:id])
     @cart_item.destroy
-    redirect_to cart_item_path
+    redirect_to cart_items_path
   end
 
   def destroy_all
@@ -22,5 +22,9 @@ class Customers::CartItemsController < ApplicationController
   end
 
   def create
+  end
+
+    private
+  def cart_item_params
   end
 end
