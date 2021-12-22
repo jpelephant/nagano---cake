@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     get 'orders/verification', to: 'orders#verification'
     get 'orders/thanks', to: 'orders#thanks'
     patch 'orders/confirm', to: 'orders#confirm'
-    resources :shipping_address,  except: [:show, :new]
+    resources :shipping_addresses,  except: [:show, :new]
   end
 
   namespace :admin do

@@ -1,6 +1,6 @@
-class CreateAddresses < ActiveRecord::Migration[5.2]
+class CreateShippingAddresses < ActiveRecord::Migration[5.2]
   def change
-    create_table :addresses do |t|
+    create_table :shipping_addresses do |t|
       t.integer :customer_id, null: false
       t.string :name, null: false
       t.string :postal_code, null: false
