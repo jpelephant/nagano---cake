@@ -3,8 +3,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-7">
-      <div class="table">
-        <%= @cart_items.each do |cart_item| %>
+      <table>
+        <% @cart_items.each do |cart_item| %>
         <tr>
           <th>商品名</th>
           <th>単価（税込）</th>
@@ -12,14 +12,16 @@
           <th>小計</th>
         </tr>
         <tr>
-          <td><%= attachment_image_tag post_image, :image %><%= cart_item.name %></td>
+          <td><%= attachment_image_tag cart_item.item_id.image, :image %><%= cart_item.name %></td>
           <td><%= cart_item.price %></td>
           <td><%= cart_item.amount %></td>
-          <td><%=  %></td>
+          <td><%= @subtotal %></td>
+        <% end %>
         </tr>
-      </div>
+      </table>
+    </div>
       <div class="col-md-4">
-        <div class="table">
+        <table>
           <tr>
             <td>送料</td>
             <th></th>
@@ -32,21 +34,26 @@
             <td>請求金額</td>
             <th>¥<%= @total.round.to_s(:delimited)%></th>
           </tr>
-        </div>
+        </table>
       </div>
-    </div>
     <div class="row">
       <div class="col-md-10">
-        <div class="table">
+        <table>
           <tr>
             <th>支払方法</th>
-            <td></td>
+            <td>
+              <% if @orders.payment_method %>
+              クレジットカード
+              <% else %>
+              銀行振込
+              <% end %>
+            </td>
           </tr>
           <tr>
             <th>お届け先</th>
             <td></td>
           </tr>
-        </div>
+        </table>
       </div>
     </div>
     <div class="senter">

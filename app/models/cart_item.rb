@@ -9,4 +9,8 @@ class CartItem < ApplicationRecord
   def total_price
     item.taxin_price * quantity
   end
+  
+  def add_tax_sales_price
+    (self.price * 1.10).round
+  end
 end

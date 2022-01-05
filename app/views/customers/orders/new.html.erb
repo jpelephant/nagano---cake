@@ -6,16 +6,16 @@
   </div>
 </div>
 <h1>支払方法</h1>
-<%= form_with model: @address, local:true do |f| %>
+<%= form_with model: @order, url:  orders_verification_path, local:true do |f| %>
   <%= f.radio_button :payment_method, 0, checked: true %>クレジットカード
   <%= f.radio_button :payment_method, 1 %>銀行振り込み
 
 <h2><strong>お届け先</strong></h2>
-<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
+<%= f.select :shipping_address_id, options_from_collection_for_select(ShippingAddress.all, :id, :full_address) %>
 
 <div class="label">
-  <%= f.label :post_code, "郵便番号（ハイフンなし）" %>
-  <%= f.text_field :post_code %>
+  <%= f.label :postal_code, "郵便番号（ハイフンなし）" %>
+  <%= f.text_field :postal_code %>
 </div>
 
 <div class="label">

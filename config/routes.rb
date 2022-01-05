@@ -13,10 +13,10 @@ Rails.application.routes.draw do
     resources :customers, only: [:show, :edit, :update]
     get 'customers/withdrawal', to: 'customers#withdrawal'
     patch 'customers/:id', to: 'customers#destroy'
-    resources :cart_items, only: [:index, :update, :destroy, :create]
     delete 'cart_items/destroy_all', to: 'cart_items#destroy_all'
+    resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :orders, only: [:new, :index, :show]
-    get 'orders/verification', to: 'orders#verification'
+    post 'orders/verification', to: 'orders#verification'
     get 'orders/thanks', to: 'orders#thanks'
     patch 'orders/confirm', to: 'orders#confirm'
     resources :shipping_addresses,  except: [:show, :new]
