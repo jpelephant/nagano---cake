@@ -14,7 +14,7 @@
         <% @cart_items.each do |cart_item| %>
         <tr>
           <td><%= cart_item.item.name %></td>
-          <td><%= cart_item.item.price %>(<%= cart_item.add_tax_sales_price.to_s(:dalimited) %>)</td>
+          <td><%= cart_item.item.price %>(<%= cart_item.add_tax_item_price.to_s(:dalimited) %>)</td>
           <td>
               <%= form_with model: cart_item, local:true do |f| %>
               <%= f.hidden_field :cart_item, value: "amount" %>

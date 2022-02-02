@@ -28,6 +28,12 @@
           <th>税抜価格</th>
           <td><%= f.text_field :price %>円</td>
         </tr>
+        <tr>
+          <th>販売ステータス</th>
+          <td><%= f.radio_button :is_active, 0, checked: true %>販売中
+              <%= f.radio_button :is_active, 1 %>販売停止中
+          </td>
+        </tr>
       </table>
       <%= f.submit '変更を保存' %>
       <% end %>

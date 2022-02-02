@@ -24,15 +24,15 @@
         <table>
           <tr>
             <td>送料</td>
-            <th></th>
+            <th><%= @order.postage %></th>
           </tr>
           <tr>
             <td>商品合計</td>
-            <th>¥<%= @total.round.to_s(:delimited)%></th>
+            <th>¥<%= @total.round.to_s(:delimited) %></th>
           </tr>
           <tr>
             <td>請求金額</td>
-            <th>¥<%= @total.round.to_s(:delimited)%></th>
+            <th>¥<%= @order.total_payment %></th>
           </tr>
         </table>
       </div>
@@ -60,8 +60,18 @@
         </table>
       </div>
     </div>
-    <div class="senter">
-      <%= link_to "注文を確定する"  %>
-    </div>
+    <senter>
+      <% form_with model: @order do |f| %>
+        <%= f.idden_field :order, value: "customer_id" %>
+        <%= f.idden_field :order, value: "shipping_postal_code" %>
+        <%= f.idden_field :order, value: "shipping_address" %>
+        <%= f.idden_field :order, value: "shipping_address_name" %>
+        <%= f.idden_field :order, value: "shipping_address_name" %>
+        <%= f.idden_field :order, value: "payment_method" %>
+        <%= f.idden_field :order, value: "postage" %>
+        <%= f.idden_field :order, value: "total_payment" %>
+      <% f.submit "注文を確定" %>
+      <% end %>
+    </senter>
   </div>
 </div>

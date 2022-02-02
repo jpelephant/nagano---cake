@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <%= @orders.each do |order| %>
+      <% @order.each do |order| %>
       <thead>
         <tr>
           <th>注文日</th>
@@ -18,7 +18,7 @@
         <td><%= order.address %></td>
         <td><%= order.name%></td>
         <td><%= order.total_payment %></td>
-        <td><%= link_to "表示する", order_path %></td>
+        <td><%= link_to "表示する", order_path(order.id) %></td>
       </tbody>
     <% end %>
     </div>

@@ -6,9 +6,9 @@
   </div>
 </div>
 <h1>支払方法</h1>
-<%= form_with model: @order, url:  orders_verification_path, local:true do |f| %>
-  <%= f.radio_button :payment_method, 0, checked: true %>クレジットカード
-  <%= f.radio_button :payment_method, 1 %>銀行振り込み
+<%= form_with model: @order, url: orders_verification_path, local:true do |f| %>
+  <%= f.radio_button :payment_method, :credit_card, checked: true %>クレジットカード
+  <%= f.radio_button :payment_method, :transfer %>銀行振り込み
 <h2><strong>お届け先</strong></h2>
   <%= f.radio_button :select_address, 0, checked: true %>ご自身の住所
   ¥<%= @customer.postal_code %><%= @customer.address %><%= @customer.full_name %>
