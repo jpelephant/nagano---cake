@@ -1,7 +1,6 @@
 class Customers::ItemsController < ApplicationController
   def index
-    @items = Item.all.page(params[:page])
-    @item = Item.all
+    @items = Item.all.page(params[:page]).per(8)
     @genres = Genre.all
   end
 

@@ -31,9 +31,15 @@ class Customers::OrdersController < ApplicationController
 
   def confirm
     @cart_item = CartItem.new(params[:id])
-    @order.customer_id = current_customer.id
+    @order.customer_id = current_customer_id
     @order = @cart_item.order.new(order_params)
-    @order.save
+    if @order.save
+      @order_details =OrderDesails.new(order_details_params)
+      @order_details.item_id = @cart_item.item.name
+      @order_details.order_id = 
+      @order_details.price  = @cart_item.item.price
+      @order_details.amount = @cart_item.amount
+    end
     redirect_to orders_thanks_path
   end
 

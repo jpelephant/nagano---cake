@@ -1,3 +1,4 @@
+<p id="notice"></p>
 <div class="container">
   <div class="row">
     <div class="col-md-3">
@@ -15,16 +16,26 @@
     </div>
   </div>
   <div class="row">
+    <div class="col-md-3"></div>
+    <h2><strong>新着商品</strong></h2>
+  </div>
+  <div class="row">
     <%= @items.each do |item| %>
-    <div class="col-md-offset-3 col-md-8">
-      <h2><strong>新着商品</strong></h2>
-      <tr>
-        <th><%= attachment_image_tag item, :image %></th>
-        <th><%= item.name %></th>
-        <td>¥<%= item.price %></td>
-      </tr>
-      <%= link_to "全ての商品を見る", customer_session_path %>
+    <div class="col-lg-3 col-md-6 mb-3">
+      <table>
+        <tr>
+          <th><%= attachment_image_tag item, :image, format: 'jpeg', size: "150x150" %></th>
+        </tr>
+        <tr>
+          <td><%= item.name %></td>
+        </tr>
+        <tr>
+          <td>¥<%= item.price %></td>
+        </tr>
+        </tr>
+      </table>
     </div>
     <% end %>
+    <%= link_to "全ての商品を見る", customer_session_path %>
   </div>
 </div>

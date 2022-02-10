@@ -14,7 +14,7 @@
       <div class="label">
         <%= f.label :name, "宛名" %>
         <%= f.text_field :name %>
-        <%= f.submit"新規登録" %>
+        <%= f.submit"新規登録", class: "btn btn-outline-success" %>
       </div>
       <% end %>
     </div>
@@ -36,7 +36,7 @@
             <td><%= address.postal_code %></td>
             <td><%= address.address %></td>
             <td><%= address.name %></td>
-            <td><%= link_to "編集する", edit_shipping_address_path(address)%><%= link_to "削除する", shipping_address_path(address), method: :delete %></td>
+            <td><%= link_to "編集する", edit_shipping_address_path(address), class: "btn btn-success" %><%= link_to "削除する", shipping_address_path(address), class: "btn btn-danger", method: :delete %></td>
           </tr>
         </tbody>
         <% end %>

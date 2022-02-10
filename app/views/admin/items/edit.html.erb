@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-offset-2 col-md-3">
       <h1><strong>商品編集</strong></h1>
     </div>
   </div>
+  <%= form_with model: @item,url: admin_item_path(@item), local:true do |f| %>
   <div class="row">
-    <%= form_with model:@item,url: admin_item_path(@item), local: true do |f| %>
-    <div class="col-md-offset-4 col-md-4">
+    <div class="col-md-offset-3 col-md-5">
       <table>
         <tr>
           <th>商品画像</th>
@@ -35,8 +35,10 @@
           </td>
         </tr>
       </table>
-      <%= f.submit '変更を保存' %>
-      <% end %>
     </div>
   </div>
+  <center>
+    <%= f.submit '変更を保存', class: "btn btn-success" %>
+  </center>
+  <% end %>
 </div>

@@ -1,12 +1,16 @@
+<p id="notice"></p>
 <div class="container">
   <div class="row">
     <div class="col-md-3">
       <h1><strong>商品詳細</strong></h1>
-      <%= attachment_image_tag @item, :image %>
     </div>
   </div>
   <div class="row">
-    <div class="col-3">
+    <div class="col-md-3">
+      <%= attachment_image_tag @item, :image %>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-3">
       <table>
         <tr>
           <th>商品名</th>
@@ -24,8 +28,8 @@
           <th>税込価格（税抜価格）</th>
           <td><%= @item.add_tax_item_price.to_s(:dalimited)%>(<%= @item.price %>)円</td>
         </tr>
-        <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-primary" %>
       </table>
+      <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success" %>
     </div>
   </div>
 </div>

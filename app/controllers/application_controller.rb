@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
 		devise_parameter_sanitizer.permit(:sign_up, keys: added_attrs)
 	end
 
+	#before_action :authenticate_customer!,except: [:top, :about]
+  #before_action :authenticate_admin!
   def after_sign_in_path_for(resource)
   case resource
   when Customer

@@ -1,28 +1,33 @@
+<p id="notice"></p>
 <div class="container">
   <div class="row">
     <div class="col-md-3">
        <%= render 'customers/homes/genre', genres: @genres %>
     </div>
-    <div class="col-md-8">
-      <div class="table">
+    <div class="col-md-3">
+      <tr>
+        <th><%= attachment_image_tag @item, :image, format: 'jpeg', size: "200x150" %></th>
+      </tr>
+    </div>
+    <div class="col-md-5">
+      <table>
         <tr>
-          <th><%= attachment_image_tag @item, :image %></th>
-          <td><%= @item.name %></td>
+           <td><%= @item.name %></td>
         </tr>
-        <tr>
+         <tr>
           <td><%= @item.introduction %></td>
         </tr>
         <tr>
-          <td>¥<%= @item.price %></td>
+          <td>¥<%= @item.add_tax_item_price.to_s(:dalimited) %>(税込)</td>
         </tr>
         <%= form_with model: @cart_item do |f| %>
         <tr>
           <%= f.hidden_field :item_id, value: @item.id %>
           <td><%= f.select :amount, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"],["5","5"],["6","6"],["7","7"],["8","8"],["9","9"]], include_blank: "個数選択" %></td>
-          <td><%= f.submit "カートに入れる" %></td>
-        </tr>
-        <% end %>
-      </div>
+          <td><%= f.submit "カートに入れる", class: "btn btn-success" %></td>
+          <% end %>
+        </div>
+      </table>
     </div>
   </div>
 </div>
