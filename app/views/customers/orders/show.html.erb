@@ -12,11 +12,17 @@
         </tr>
         <tr>
           <th>配送先</th>
-          <td><%= @order.hipping_postal_code %><%= @order.shipping_address %><%= @order.shipping_address_name %></td>
+          <td><%= @order.shipping_postal_code %><%= @order.shipping_address %><%= @order.shipping_address_name %></td>
         </tr>
         <tr>
           <th>支払方法</th>
-          <td><%= @order.payment_method %></td>
+          <td>
+            <% if @order.payment_method %>
+            クレジットカード
+            <% else %>
+            銀行振込
+            <% end %>
+          </td>
         </tr>
       </table>
     </div>
@@ -51,11 +57,11 @@
           </tr>
         </thead>
         <tbody>
-          <% @cart_items.each do |cart_item| %>
+          <% @order_details.each do |order_detail| %>
           <tr>
-            <td><%= cart_item.item.name %></td>
-            <td><%= cart_item.item.price %></td>
-            <td><%= cart_item.amount %></td>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.item.price %></td>
+            <td><%= order_detail.amount %></td>
             <td><%= @subtotal %></td>
           </tr>
           <% end %>

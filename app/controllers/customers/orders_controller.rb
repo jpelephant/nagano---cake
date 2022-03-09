@@ -12,7 +12,6 @@ class Customers::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     @order.postage = 800
     @order.total_payment = @total + @order.postage
-    #@order.payment_method = params[:order][:payment_method].to_i
     if params[:order][:select_address] == "0"
       @order.shipping_postal_code = current_customer.postal_code
       @order.shipping_address = current_customer.address
@@ -30,15 +29,20 @@ class Customers::OrdersController < ApplicationController
   end
 
   def confirm
-    @cart_item = CartItem.new(params[:id])
-    @order.customer_id = current_customer_id
-    @order = @cart_item.order.new(order_params)
+    @cart_item = current_customer.cart_items.all
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
     if @order.save
-      @order_details =OrderDesails.new(order_details_params)
-      @order_details.item_id = @cart_item.item.name
-      @order_details.order_id = 
-      @order_details.price  = @cart_item.item.price
-      @order_details.amount = @cart_item.amount
+      @cart_item.each do |cart_item|
+        @order_details = OrderDetail.new
+        @order_details.item_id = cart_item.item.id
+        @order_details.order_id = @order.id
+        @order_details.price  = cart_item.item.price
+        @order_details.amount = cart_item.amount
+        @order_details.save
+      end
+      @cart_item.destroy_all
+
     end
     redirect_to orders_thanks_path
   end
@@ -48,23 +52,27 @@ class Customers::OrdersController < ApplicationController
 
   def index
     @order = current_customer.orders
-
+    @order_details = OrderDetail.all.page(params[:page]).per(5)
   end
 
   def show
     @order = Order.find(params[:id])
-    @cart_items = current_customer.cart_items
-    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+    @order_details = @order.order_details
+    @total = @order_details.inject(0) { |sum, item| sum + item.sum_of_price }
     @order.postage = 800
     @order.total_payment = @total + @order.postage
   end
 
   private
   def order_params
-    params.permit(:payment_method, :customer_id, :shipping_postal_code, :shipping_address, :shipping_address_name, :postage, :total_payment, :created_at)
+    params.require(:order).permit(:payment_method, :customer_id, :shipping_postal_code, :shipping_address, :shipping_address_name, :postage, :total_payment, :created_at)
   end
 
   def cart_item_params
     params.require(:cart_item).permit(:item_id, :amount)
+  end
+
+  def order_details_params
+    params.require(:order_details).permit(:item_id, :order_id, :price, :amount)
   end
 end

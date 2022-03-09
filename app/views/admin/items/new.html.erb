@@ -3,6 +3,12 @@
     <div class="col-md-offset-2 col-md-3">
       <h1><strong>商品新規登録</strong></h1>
     </div>
+  <% if @item.errors.any? %>
+    <%= @item.errors.count %>件のエラーが発生しました
+    <% @item.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  <% end %>
   </div>
   <%= form_with model: @item,url: admin_items_path, local:true do |f| %>
   <div class="row">
@@ -22,7 +28,7 @@
         </tr>
         <tr>
           <th>ジャンル</th>
-          <td><%= f.collection_select(:genre_id, @categories, :id, :name) %></td>
+          <td><%= f.collection_select(:genre_id, Genre.all, :id, :name) %></td>
         </tr>
         <tr>
           <th>税抜価格</th>

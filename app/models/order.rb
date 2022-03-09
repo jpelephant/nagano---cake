@@ -15,7 +15,7 @@ class Order < ApplicationRecord
   end
 
   def total_price
-    item.taxin_price * quantity
+    item.taxin_price * amount
   end
 
   enum payment_method: { credit_card: 0, transfer: 1 }

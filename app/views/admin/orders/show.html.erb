@@ -1,4 +1,4 @@
-<h1><strong>注文履歴詳細</strong></h1>
+<h4><strong>注文履歴詳細</strong></h4>
 
 <div class="container">
   <div class="row">
@@ -6,25 +6,30 @@
       <table>
         <tr>
           <th>購入者</th>
-          <tb><%= @customer.full_name %></tb>
+          <td><%= @customer.full_name %></td>
         </tr>
         <tr>
           <th>注文日</th>
-          <tb><%= @order.created_at %></tb>
+          <td><%= @order.created_at %></td>
         </tr>
         <tr>
           <th>配送先</th>
-          <tb><%= @order.shipping_address %></tb>
+          <td><%= @order.shipping_address %></td>
         </tr>
         <tr>
           <th>支払方法</th>
-          <tb><%= @order.payment_method %></tb>
+          <td>
+            <% if @order.payment_method %>
+            クレジットカード
+            <% else %>
+            銀行振込
+            <% end %>
+          </td>
         </tr>
       </table>
     </div>
     <div class="col-md-8">
       <table>
-        <thead>
           <tr>
             <th>商品名</th>
             <th>単価（税込）</th>
@@ -32,44 +37,49 @@
             <th>小計</th>
             <th></th>
           </tr>
-        </thead>
-        <tbody>
+          <% @order_details.each do |order_detail| %>
           <tr>
-            <% @order_details.each do |order_detail| %>
-            <tb><%= order_detail.item.name %></tb>
-            <tb><%= order_detail.price %></tb>
-            <tb><%= order_detail.amount %></tb>
-            <tb><%= order_detail.amount * order_detail.price %></tb>
-            <tb><%=%></tb>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.price %></td>
+            <td><%= order_detail.amount %></td>
+            <td><%= order_detail.amount * order_detail.price %></td>
+            <td><%=%></td>
           </tr>
-        </tbody>
+          <% end %>
       </table>
     </div>
     <div class="col-md-4">
       <table>
         <tr>
           <th></th>
-          <tb></tb>
+          <td></td>
         </tr>
         <tr>
           <th></th>
-          <tb></tb>
+          <td></td>
         </tr>
         <tr>
           <th></th>
-          <tb></tb>
+          <td></td>
         </tr>
         <tr>
           <th>商品合計</th>
-          <tb><%= @total.round.to_s(:delimited)%></tb>
+          <td><%= @total.round.to_s(:delimited)%></td>
         </tr>
         <tr>
           <th>送料</th>
-          <tb><%= @order.postage %></tb>
+          <td><%= @order.postage %></td>
         </tr>
         <tr>
           <th>請求合計金額</th>
-          <tb><%= @order.total_payment %></tb>
+          <td>
+
+           <% if @order.payment_method %>
+          クレジットカード
+          <% else %>
+          銀行振込
+          <% end %>
+          </td>
         </tr>
       </table>
     </div>

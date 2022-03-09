@@ -1,4 +1,11 @@
+<p id="notice"></p>
 <h1><strong>配送先登録/一覧</strong></h1>
+<% if @shipping_address.errors.any? %>
+  <%= @shipping_address.errors.count %>件のエラーが発生しました
+  <% @shipping_address.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
 <div class="container">
   <div class="row">
     <div class="col-md-10">
@@ -14,8 +21,11 @@
       <div class="label">
         <%= f.label :name, "宛名" %>
         <%= f.text_field :name %>
-        <%= f.submit"新規登録", class: "btn btn-outline-success" %>
       </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-1">
+      <%= f.submit"新規登録", class: "btn btn-outline-success" %>
       <% end %>
     </div>
   </div>
@@ -30,12 +40,12 @@
             <th></th>
           </tr>
         </thead>
-        <% @shipping_addresses.each do |address| %>
+        <% @shipping_addresses.each do |shipping_address| %>
         <tbody>
           <tr>
-            <td><%= address.postal_code %></td>
-            <td><%= address.address %></td>
-            <td><%= address.name %></td>
+            <td><%= shipping_address.postal_code %></td>
+            <td><%= shipping_address.address %></td>
+            <td><%= shipping_address.name %></td>
             <td><%= link_to "編集する", edit_shipping_address_path(address), class: "btn btn-success" %><%= link_to "削除する", shipping_address_path(address), class: "btn btn-danger", method: :delete %></td>
           </tr>
         </tbody>

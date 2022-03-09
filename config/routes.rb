@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
     resources :genres, except: [:new, :destro, :show]
     resources :customers, except: [:new, :create, :destroy]
-    get 'order_show', to: 'order_show#show'
+    resources :orders, only: [:index, :show]
     patch 'orders', to: 'orders#update'
     patch 'order_details', to: 'order_details#update'
   end
