@@ -1,7 +1,12 @@
 class Customers::CartItemsController < ApplicationController
+  before_action :authenticate_customer!
   def index
     @cart_items = current_customer.cart_items
-    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+    #@total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+    @total = 0
+    @cart_items.each do |cart_item|
+      @total += cart_item.sum_of_price
+    end
   end
 
   def create

@@ -17,7 +17,7 @@
         <th><%= link_to item.name, item_path(item) %></th>
       </tr>
       <tr>
-        <th>¥<%= item.price %></th>
+        <th>¥<%= item.add_tax_item_price.to_s(:dalimited) %></th>
       </tr>
     </div>
     <% end %>

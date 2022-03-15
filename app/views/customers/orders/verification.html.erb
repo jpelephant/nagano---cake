@@ -14,9 +14,9 @@
         <% @cart_items.each do |cart_item| %>
         <tr>
           <td><%= attachment_image_tag @item, :image %><%= cart_item.item.name %></td>
-          <td><%= cart_item.item.price %></td>
+          <td><%= cart_item.add_tax_item_price.to_s(:delimited) %></td>
           <td><%= cart_item.amount %></td>
-          <td><%= cart_item.item.price * cart_item.amount %></td>
+          <td><%= (cart_item.add_tax_item_price * cart_item.amount).to_s(:delimited) %></td>
         <% end %>
         </tr>
       </table>

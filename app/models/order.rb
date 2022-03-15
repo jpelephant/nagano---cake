@@ -6,7 +6,7 @@ class Order < ApplicationRecord
     self.last_name + " " + self.first_name
   end
 
-  def add_tax_sales_price
+  def add_tax_item_price
     (self.price * 1.10).round
   end
 

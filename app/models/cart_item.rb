@@ -8,6 +8,6 @@ class CartItem < ApplicationRecord
   end
 
   def sum_of_price
-    item.price * amount
+    self.add_tax_item_price * amount
   end
 end

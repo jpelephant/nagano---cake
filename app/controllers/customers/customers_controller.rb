@@ -1,4 +1,5 @@
 class Customers::CustomersController < ApplicationController
+  before_action :authenticate_customer!
   def unsubscribe
   end
 
