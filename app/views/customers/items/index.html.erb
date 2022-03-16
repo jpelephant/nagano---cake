@@ -10,16 +10,18 @@
   </div>
   <div class="row">
     <% @items.each do |item| %>
-    <div class="col-lg-3 col-md-1 mb-10">
-      <tr>
-        <th><%= attachment_image_tag item, :image, format: 'jpeg', size: "150x125" %></th>
-      </tr>
-      <tr>
-        <th><%= link_to item.name, item_path(item) %></th>
-      </tr>
+    <div class="col-lg-3 col-md-4 mb-12">
+      <table>
         <tr>
-        <th>¥<%= item.add_tax_item_price.to_s(:dalimited) %></th>
-      </tr>
+          <th><%= attachment_image_tag item, :image, format: 'jpeg', size: "150x125" %></th>
+        </tr>
+        <tr>
+          <th><%= link_to item.name, item_path(item) %></th>
+        </tr>
+          <tr>
+          <th>¥<%= item.add_tax_item_price.to_s(:dalimited) %></th>
+        </tr>
+      </table>
     </div>
     <% end %>
   </div>

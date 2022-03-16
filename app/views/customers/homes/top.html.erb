@@ -21,7 +21,7 @@
     <h2><strong>新着商品</strong></h2>
   </div>
   <div class="row">
-    <%= @items.each do |item| %>
+    <% @items.each do |item| %>
     <div class="col-lg-3 col-md-6 mb-3">
       <table>
         <tr>
@@ -37,6 +37,8 @@
       </table>
     </div>
     <% end %>
-    <%= link_to "全ての商品を見る", customer_session_path %>
   </div>
+</div>
+<div align="right">
+  <%= link_to "全ての商品を見る>", items_path%>
 </div>
