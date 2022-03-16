@@ -1,26 +1,29 @@
 <p id="notice"></p>
+  <%= render 'customers/homes/genre', genres: @genres %>
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
-       <%= render 'customers/homes/genre', genres: @genres %>
+    <div class="col-md-4">
+      <strong><h4>
+        商品一覧
+      </h4></strong>
     </div>
   </div>
-      <h4><strong>商品一覧</strong></h4>
   <div class="row">
-    <%= @items.each do |item| %>
-    <div class="col-md-1"></div>
-    <div class="col-lg-2 col-md-6 mb-3">
+    <% @items.each do |item| %>
+    <div class="col-lg-3 col-md-1 mb-10">
       <tr>
-        <th><%= attachment_image_tag item, :image, format: 'jpeg', size: "150x150" %></th>
+        <th><%= attachment_image_tag item, :image, format: 'jpeg', size: "150x125" %></th>
       </tr>
       <tr>
         <th><%= link_to item.name, item_path(item) %></th>
       </tr>
-      <tr>
+        <tr>
         <th>¥<%= item.add_tax_item_price.to_s(:dalimited) %></th>
       </tr>
     </div>
     <% end %>
-    <%= paginate @items %>
   </div>
 </div>
+<p class="text-center">
+  <%= paginate @items %>
+</p>
