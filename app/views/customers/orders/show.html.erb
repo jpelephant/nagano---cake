@@ -62,7 +62,7 @@
             <td><%= order_detail.item.name %></td>
             <td><%= order_detail.item.price %></td>
             <td><%= order_detail.amount %></td>
-            <td><%= @subtotal %></td>
+            <td><%= order_detail.amount * order_detail.add_tax_sales_price %></td>
           </tr>
           <% end %>
         </tbody>

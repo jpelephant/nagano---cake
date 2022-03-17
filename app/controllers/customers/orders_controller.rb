@@ -52,15 +52,14 @@ class Customers::OrdersController < ApplicationController
   end
 
   def index
-    @order = current_customer.orders
-    @order_details = OrderDetail.all.page(params[:page]).per(5)
+    @order = current_customer.orders.all.page(params[:page]).per(5)
   end
 
   def show
     @order = Order.find(params[:id])
+    @customer = @order.customer
     @order_details = @order.order_details
     @total = @order_details.inject(0) { |sum, item| sum + item.sum_of_price }
-    @order.postage = 800
     @order.total_payment = @total + @order.postage
   end
 

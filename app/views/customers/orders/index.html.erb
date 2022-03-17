@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <table>
+      <table border="1">
         <thead>
           <tr>
             <th>注文日</th>
@@ -18,21 +18,22 @@
           <tr>
             <td><%= order.created_at %></td>
             <td>
-              〒<%= order.shipping_postal_code %></br>
-              <%= order.shipping_address %></br>
+              〒<%= order.shipping_postal_code %><br>
+              <%= order.shipping_address %><br>
               <%= order.shipping_address_name %>
             </td>
             <td>
-              <% @order_details.each do |order_detail| %>
-              <%= order_detail.item.name %>
-            <% end %>
+              <% order.order_details.each do |order_detail| %>
+              <span><%= order_detail.item.name %></span><br>
+              <% end %>
             </td>
-            <td><%= order.total_payment %></td>
+            <td><%= order.order_details.inject(0) { |sum, item| sum + item.sum_of_price } %></td>
             <td><%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %></td>
           </tr>
         </tbody>
         <% end %>
       </table>
+      <%= paginate @order, class: "btn btn-link" %>
     </div>
   </div>
 </div>
