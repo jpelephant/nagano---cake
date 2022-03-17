@@ -1,4 +1,4 @@
-<table>
+<table border="1">
   <thead>
     <tr>
       <th>ジャンル検索</th>
@@ -7,7 +7,9 @@
   <% genres.each do |genre| %>
   <tbody>
     <tr>
-      <th><%= genre.name %></th>
+      <th rowspan="5">
+        <%= genre.name %>
+      </th>
     </tr>
   </tbody>
   <% end %>
